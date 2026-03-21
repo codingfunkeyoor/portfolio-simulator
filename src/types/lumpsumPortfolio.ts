@@ -1,9 +1,13 @@
 import { Asset } from './asset';
+import { RebalancingFrequency, RebalancingHistory } from './rebalancing';
 
 export interface LumpsumPortfolio {
   selectedAssets: (Asset | null)[];
   allocations: number[];
-  // Note: No rebalancing support for now
-  // Note: No step-up (not applicable for lumpsum)
+  // Rebalancing support
+  rebalancingEnabled: boolean;
+  rebalancingFrequency: RebalancingFrequency;
+  rebalancingThreshold: number; // Percentage threshold for drift-based rebalancing
+  rebalancingHistory: RebalancingHistory[];
+  lastRebalancingDate?: Date;
 }
-
